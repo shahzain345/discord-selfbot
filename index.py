@@ -172,7 +172,8 @@ def deletechannels(guildId):
         randChannel = random.choice(client.get_guild(guildId).channels).id
         if randChannel not in deletedChannels:
            selfbot.deleteChannel(randChannel)
-           deletedChannels.append(randChannel)
+           if randChannel not in deletedChannels:
+               deletedChannels.append(randChannel)
         elif len(client.get_guild(guildId).channels) < len(deletedChannels) or len(client.get_guild(guildId).channels) == len(deletedChannels):
             return None
 
@@ -305,7 +306,8 @@ def deleteroles(guildId):
         randRole = random.choice(client.get_guild(guildId).roles).id
         if randRole not in deletedRoles:
            selfbot.deleteRole(guildId, randRole)
-           deletedRoles.append(randRole)
+           if randRole not in deletedRoles:
+               deletedRoles.append(randRole)
         elif len(client.get_guild(guildId).roles) < len(deletedRoles) or len(client.get_guild(guildId).roles) == len(deletedRoles):
             return None
 def getRandomGuildChannel(guildId):
@@ -318,7 +320,8 @@ def massBan(guildId):
         randMember = random.choice(data)
         if randMember not in bannedMembers:
             selfbot.banMember(guildId, randMember)
-            bannedMembers.append(randMember)
+            if randMember not in bannedMembers:
+               bannedMembers.append(randMember)
         elif len(data) < len(bannedMembers) or len(data) == len(bannedMembers):
             return None
 
