@@ -8,7 +8,7 @@ import os
 import json
 class MemberScrapper:
     def __init__(self, token):
-        self.bot = discum.Client(token="OTMyMDUzMjkwNjUxMzc3NzQ0.YeNYag.DLug925IQRCkojd1KAXtcXlLC8U")
+        self.bot = discum.Client(token=token)
     def close_after_fetching(self, resp, guild_id):
         if self.bot.gateway.finishedMemberFetching(guild_id):
             lenmembersfetched = len(self.bot.gateway.session.guild(guild_id).members) #this line is optional
