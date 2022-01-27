@@ -1,0 +1,5 @@
+httpx
+discum
+discord
+colorama
+pyfiglet
