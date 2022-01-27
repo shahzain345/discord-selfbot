@@ -17,7 +17,7 @@ from colorama import Style
 intents = discord.Intents.all()
 intents.members = True
 activity = discord.Activity(type=discord.ActivityType.listening,
-                            name="Shahzain Self Bot - github.com/shahzain345")
+                            name="Shahzain Self Bot - github.com/shahzain345/discord-selfbot")
 client = commands.Bot(command_prefix="!",
                       case_insensitive=False, self_bot=True, intents=intents, activity=activity, status=discord.Status.dnd)
 client.remove_command(name="help")
@@ -74,7 +74,7 @@ async def massban(ctx: commands.Context):
 
 @client.command(pass_context=True)
 async def help(ctx: commands.Context):
-    await ctx.reply(content="Please view the commands in https://github.com/shahzain345/discord-selfbot")
+    await ctx.reply(content="Please view the commands in https://github.com/shahzain345/discord-selfbot/blob/main/README.md")
 
 
 @client.command(pass_context=True)
