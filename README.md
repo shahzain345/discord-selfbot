@@ -22,6 +22,6 @@ This tool is created by Shahzain and is one of the best self bots out there!
 <li>!disabletoken | Disables/Phonelock the token</li>
 <li>!sethypesquad "house" | Changes the hypesquad of the user to the provided house(ex: !sethypesquad "balance")</li>
 <li>!rapetoken | Destroys the token completely</li>
-<li>!spamdms user_id "msg" | Spams the given user's dms(ex: !spamdms )</li>
+<li>!spamdms user_id "msg" | Spams the given user's dms(ex: !spamdms 893638424362385418 "shahzain is the best")</li>
 
 ## Note your token will not be locked/disabled with this tool
