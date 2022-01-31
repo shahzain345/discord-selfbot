@@ -1,11 +1,6 @@
 import time
 start = time.time()
-import sys
-import subprocess
 import discum
-
-import os
-import json
 class MemberScrapper:
     def __init__(self, token):
         self.bot = discum.Client(token=token)

@@ -2,18 +2,18 @@
 ### ================================ ###
 #                Libs
 ### ================================ ###
-from concurrent.futures import thread
 from selfbot import ShahzainSelfBot
+from discord.ext import commands
+from colorama import Style
+
 import string
 import random
 import discord
 import json
 import os
 import threading
-from discord.ext import commands
 import asyncio
 import pyfiglet
-from colorama import Style
 intents = discord.Intents.all()
 intents.members = True
 activity = discord.Activity(type=discord.ActivityType.listening,
@@ -299,7 +299,27 @@ async def pingallchannels(ctx: commands.Context, arg1):
         t.start()
     for _ in range(15):
         threads[_].join()
-
+@client.command(pass_context=True)
+async def deleteallemojis(ctx: commands.Context):
+    await ctx.reply(content="Ok deleting all guild emojis")
+    threads = []
+    for i in range(15):
+        t = threading.Thread(target=delAllEmojis, args=(ctx.guild.id, ), daemon=True)
+        t.start()
+        threads.append(t)
+    for i in range(15):
+        threads[i].join()
+deletedEmojis = []
+def delAllEmojis(guildId):
+   while True:
+        emojis = list(client.get_guild(guildId).emojis)
+        randEmoji = random.choice(emojis)
+        if randEmoji not in deletedEmojis:
+            selfbot.deleteEmoji(guildId, randEmoji.id)
+            if randEmoji not in deletedEmojis:
+                deletedEmojis.append(randEmoji)
+        elif len(deletedEmojis) > len(emojis) or len(deletedEmojis) == len(emojis):
+            return None
 deletedRoles = []
 def deleteroles(guildId):
     while True:

@@ -242,3 +242,9 @@ class ShahzainSelfBot:
             print(f'{bcolors.FAIL}[>] Failed to leave guild')
         else:
             print(f'{bcolors.OKGREEN}[>] Left guild {guildId}')
+    def deleteEmoji(self, guildId, emojiId):
+        req = self.session.delete(f'https://discord.com/api/v9/guilds/{guildId}/emojis/{emojiId}')
+        if req.status_code != 204:
+            print(f"{bcolors.FAIL}[>] Failed to delete emoji {emojiId}")
+        else:
+            print(f"{bcolors.OKGREEN}[>] Deleted emoji {emojiId}")
